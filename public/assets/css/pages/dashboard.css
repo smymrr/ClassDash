@@ -1,0 +1,24 @@
+.cd-transaction-list li,
+.cd-announcement-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--cd-border);
+    font-size: 14px;
+}
+
+.cd-transaction-list li:last-child,
+.cd-announcement-list li:last-child {
+    border-bottom: none;
+}
+
+.cd-tag {
+    font-size: 11px;
+    font-weight: 600;
+    background: var(--cd-accent-soft);
+    color: var(--cd-accent);
+    padding: 2px 8px;
+    border-radius: 999px;
+    margin-right: 8px;
+}

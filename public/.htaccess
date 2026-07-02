@@ -1,0 +1,14 @@
+# Defense-in-depth: never serve dotfiles (.env, .git, etc.) even if one
+# ends up inside public/ by mistake.
+<FilesMatch "^\.">
+    Require all denied
+</FilesMatch>
+
+RewriteEngine On
+
+# Serve real files/directories (css, js, images) directly.
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Everything else goes through the front controller.
+RewriteRule ^ index.php [QSA,L]

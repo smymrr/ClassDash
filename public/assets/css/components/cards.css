@@ -1,0 +1,33 @@
+.cd-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
+.cd-card {
+    background: var(--cd-surface);
+    border-radius: var(--cd-radius);
+    padding: 18px 20px;
+    border-left: 4px solid transparent;
+}
+
+.cd-card--accent-blue { border-left-color: var(--cd-accent); }
+.cd-card--accent-orange { border-left-color: var(--cd-orange); }
+.cd-card--accent-green { border-left-color: var(--cd-green); }
+
+.cd-card__label {
+    font-size: 13px;
+    color: var(--cd-text-muted);
+}
+
+.cd-card__value {
+    margin-top: 6px;
+    font-size: 22px;
+    font-weight: 700;
+}
+
+@media (max-width: 900px) {
+    .cd-cards {
+        grid-template-columns: 1fr;
+    }
+}

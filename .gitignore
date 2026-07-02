@@ -1,0 +1,17 @@
+# Secrets — never commit
+.env
+.env.*
+!.env.example
+
+# OS/editor cruft
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Dependencies (if you add Composer later)
+/vendor/
+composer.lock
+
+# Logs
+*.log

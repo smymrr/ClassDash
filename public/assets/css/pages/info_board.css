@@ -1,0 +1,13 @@
+.cd-announcement-list--full li {
+    background: var(--cd-surface);
+    border-radius: var(--cd-radius);
+    padding: 16px;
+    margin-bottom: 12px;
+    display: block;
+}
+
+.cd-announcement-list--full p {
+    margin-top: 6px;
+    color: var(--cd-text-muted);
+    font-size: 14px;
+}

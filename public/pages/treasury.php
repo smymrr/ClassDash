@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><?= htmlspecialchars($pageTitle) ?> · ClassDash</title>
+    <link rel="stylesheet" href="/assets/css/global/variables.css">
+    <link rel="stylesheet" href="/assets/css/global/reset.css">
+    <link rel="stylesheet" href="/assets/css/global/layout.css">
+    <link rel="stylesheet" href="/assets/css/components/sidebar.css">
+    <link rel="stylesheet" href="/assets/css/components/topbar.css">
+    <link rel="stylesheet" href="/assets/css/pages/treasury.css">
+</head>
+<body>
+    <div class="cd-layout">
+        <?php require __DIR__ . '/../../includes/components/sidebar.php'; ?>
+
+        <main class="cd-main">
+            <?php require __DIR__ . '/../../includes/components/topbar.php'; ?>
+
+            <table class="cd-table">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Category</th>
+                        <th>Amount</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($transactions as $tx): ?>
+                        <tr>
+                            <td><?= htmlspecialchars($tx['title']) ?></td>
+                            <td><?= htmlspecialchars($tx['category']) ?></td>
+                            <td><?= htmlspecialchars($tx['amount']) ?></td>
+                            <td><?= htmlspecialchars($tx['created_at']) ?></td>
+                        </tr>
+                    <?php endforeach; ?>
+                    <?php if (empty($transactions)): ?>
+                        <tr><td colspan="4">PLACEHOLDER_NO_TRANSACTIONS_MESSAGE_SIDEBAR</td></tr>
+                    <?php endif; ?>
+                </tbody>
+            </table>
+        </main>
+    </div>
+</body>
+</html>
