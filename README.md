@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # ClassDash — Project Structure
 
 ```
@@ -101,3 +102,6 @@ them.
 Search for `PLACEHOLDER_..._SIDEBAR` across the project — these mark values
 that come from your database/session at runtime (user name, role, error
 messages, empty-state copy) rather than being hardcoded.
+=======
+# ClassDash
+>>>>>>> 2f1f3a1244de58864376cb7887d2f0dbb34f6ec3
