@@ -25,11 +25,6 @@ define('DB_NAME', env('DB_NAME', ''));
 define('DB_USER', env('DB_USER', ''));
 define('DB_PASS', env('DB_PASS', ''));
 
-// config/config.php
-
-define('BASE_URL', dirname($_SERVER['SCRIPT_NAME']));
-// e.g. "/PROJECT/public"
-
 // Fail loudly in the logs if the essentials are missing, instead of
 // silently trying to connect with blank credentials.
 if (DB_NAME === '' || DB_USER === '') {

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * includes/controllers/AuthController.php
  */
@@ -17,15 +18,15 @@ class AuthController
             $password = $_POST['password'] ?? '';
 
             $user = $userModel->findByEmail($email);
-
+            
             if ($user && $userModel->verifyPassword($password, $user['pwd'])) {
-                $_SESSION['user_id']   = $user['id'];
+                $_SESSION['user_id'] = $user['id'];
                 $_SESSION['user_role'] = $user['role'];
                 header('Location: /dashboard');
                 exit;
+            } elseif (!$user || !$userModel->verifyPassword($password, $user['pwd'])) {
+                $loginError = 'Invalid email or password. Please try again.';
             }
-
-            $loginError = 'PLACEHOLDER_LOGIN_ERROR_MESSAGE_SIDEBAR';
         }
 
         require __DIR__ . '/../../public/pages/login.php';
