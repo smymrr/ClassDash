@@ -15,7 +15,7 @@ class Member
 
     public function getAll(): array
     {
-        $stmt = $this->pdo->query('SELECT id, username, role, email FROM users ORDER BY username ASC');
+        $stmt = $this->pdo->query('SELECT id, fullname, role, email FROM users ORDER BY fullname ASC');
         return $stmt->fetchAll();
     }
 
@@ -25,12 +25,12 @@ class Member
     public function getAllWithDebtTotals(): array
     {
         $stmt = $this->pdo->query(
-            "SELECT u.id, u.username, u.role, u.email,
+            "SELECT u.id, u.fullname, u.role, u.email,
                     COALESCE(SUM(CASE WHEN d.status = 'unpaid' THEN d.amount ELSE 0 END), 0) AS unpaid_total
              FROM users u
              LEFT JOIN debts d ON d.user_id = u.id
-             GROUP BY u.id, u.username, u.role, u.email
-             ORDER BY u.username ASC"
+             GROUP BY u.id, u.fullname, u.role, u.email
+             ORDER BY u.fullname ASC"
         );
         return $stmt->fetchAll();
     }

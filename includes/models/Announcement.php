@@ -26,8 +26,8 @@ class Announcement
     {
         $stmt = $this->pdo->query(
             "SELECT COUNT(*) AS total FROM announcements
-             WHERE MONTH(created_at) = MONTH(CURRENT_DATE())
-               AND YEAR(created_at) = YEAR(CURRENT_DATE())"
+                WHERE EXTRACT(MONTH FROM created_at) = EXTRACT(MONTH FROM CURRENT_DATE)
+                AND EXTRACT(YEAR FROM created_at) = EXTRACT(YEAR FROM CURRENT_DATE)"
         );
         return (int) $stmt->fetch()['total'];
     }

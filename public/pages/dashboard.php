@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title><?= htmlspecialchars($pageTitle) ?> · ClassDash</title>
-    <link rel="stylesheet" href="/assets/css/global/variables.css">
-    <link rel="stylesheet" href="/assets/css/global/reset.css">
-    <link rel="stylesheet" href="/assets/css/global/layout.css">
-    <link rel="stylesheet" href="/assets/css/components/sidebar.css">
-    <link rel="stylesheet" href="/assets/css/components/topbar.css">
-    <link rel="stylesheet" href="/assets/css/components/cards.css">
-    <link rel="stylesheet" href="/assets/css/pages/dashboard.css">
+    <link rel="stylesheet" href="../assets/css/global/variables.css">
+    <link rel="stylesheet" href="../assets/css/global/reset.css">
+    <link rel="stylesheet" href="../assets/css/global/layout.css">
+    <link rel="stylesheet" href="../assets/css/components/sidebar.css">
+    <link rel="stylesheet" href="../assets/css/components/topbar.css">
+    <link rel="stylesheet" href="../assets/css/components/cards.css">
+    <link rel="stylesheet" href="../assets/css/pages/dashboard.css">
 </head>
 <body>
     <div class="cd-layout">

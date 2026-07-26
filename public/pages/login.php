@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Log in · ClassDash</title>
-    <link rel="stylesheet" href="/assets/css/global/variables.css">
-    <link rel="stylesheet" href="/assets/css/global/reset.css">
-    <link rel="stylesheet" href="/assets/css/pages/login.css">
+    <link rel="stylesheet" href="../assets/css/global/variables.css">
+    <link rel="stylesheet" href="../assets/css/global/reset.css">
+    <link rel="stylesheet" href="../assets/css/pages/login.css">
 </head>
 <body class="cd-auth-page">
     <form class="cd-auth-form" method="POST" action="/login">

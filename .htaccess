@@ -1,0 +1,16 @@
+# Defense-in-depth: never serve dotfiles (.env, .git, etc.)
+<FilesMatch "^\.">
+    Require all denied
+</FilesMatch>
+
+RewriteEngine On
+
+# Block direct browser access to config/ and includes/ entirely.
+RewriteRule ^(config|includes|vendor)(/|$) - [F,L]
+
+# Serve real files/directories (css, js, images inside public/) directly.
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Everything else goes through the front controller.
+RewriteRule ^(.*)$ public/$1 [L]

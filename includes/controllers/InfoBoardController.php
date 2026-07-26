@@ -14,11 +14,11 @@ class InfoBoardController
 
         classdash_require_login();
 
-        $pageTitle    = 'Info Board';
+        $pageTitle = 'Info Board';
         $pageSubtitle = 'Announcements, events, and schedules';
 
         $announcementModel = new Announcement($pdo);
-        $announcements       = $announcementModel->getRecent(50);
+        $announcements = $announcementModel->getRecent(50);
 
         require __DIR__ . '/../../public/pages/info_board.php';
     }

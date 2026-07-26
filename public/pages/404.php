@@ -7,6 +7,6 @@
 </head>
 <body>
     <h1>404 — Page not found</h1>
-    <p><a href="/dashboard">Back to dashboard</a></p>
+    <p><a href="<?= BASE_URL ?>/dashboard">Back to dashboard</a></p>
 </body>
 </html>

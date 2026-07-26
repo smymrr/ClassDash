@@ -23,6 +23,20 @@ $navItems = [
     ['key' => 'members',    'label' => 'Members',    'href' => '/members',     'icon' => 'users'],
 ];
 
+function get_nav_item_href(string $path): string
+{
+    if (filter_var($path, FILTER_VALIDATE_URL)) {
+        return $path;
+    }
+
+    $baseUrl = $_SERVER['SCRIPT_NAME'];
+    if (str_ends_with($baseUrl, '/index.php')) {
+        $baseUrl = substr($baseUrl, 0, -strlen('/index.php'));
+    }
+
+    return $baseUrl . '/' . ltrim($path, '/');
+}
+
 function classdash_icon(string $name): string
 {
     $icons = [
@@ -62,7 +76,7 @@ function classdash_icon(string $name): string
             <?php foreach ($navItems as $item): ?>
                 <li>
                     <a
-                        href="<?= htmlspecialchars($item['href'], ENT_QUOTES, 'UTF-8') ?>"
+                        href="<?= htmlspecialchars(get_nav_item_href($item['href']), ENT_QUOTES, 'UTF-8') ?>"
                         class="cd-sidebar__nav-link<?= $activeNav === $item['key'] ? ' is-active' : '' ?>"
                         <?= $activeNav === $item['key'] ? 'aria-current="page"' : '' ?>
                     >

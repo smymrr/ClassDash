@@ -6,8 +6,8 @@
 
 require_once __DIR__ . '/controllers/AuthController.php';
 require_once __DIR__ . '/controllers/DashboardController.php';
-require_once __DIR__ . '/controllers/TreasuryController.php';
 require_once __DIR__ . '/controllers/InfoBoardController.php';
+require_once __DIR__ . '/controllers/TreasuryController.php';
 require_once __DIR__ . '/controllers/MemberController.php';
 
 function route(string $uri): void
@@ -16,8 +16,8 @@ function route(string $uri): void
     $routes = [
         ''           => ['DashboardController', 'index', 'dashboard'],
         'dashboard'  => ['DashboardController', 'index', 'dashboard'],
+        'info-board' => ['InfoBoardController', 'index', 'info-board'],
         'treasury'   => ['TreasuryController', 'index', 'treasury'],
-        'info-board' => ['InfoBoardController', 'index', 'info_board'],
         'members'    => ['MemberController', 'index', 'members'],
         'login'      => ['AuthController', 'login', null],
         'logout'     => ['AuthController', 'logout', null],

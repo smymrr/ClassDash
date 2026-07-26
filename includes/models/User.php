@@ -30,10 +30,10 @@ class User
         return $user ?: null;
     }
 
-    public function findByUsername(string $username): ?array
+    public function findByUsername(string $fullname): ?array
     {
-        $stmt = $this->pdo->prepare('SELECT * FROM users WHERE username = :username LIMIT 1');
-        $stmt->execute([':username' => $username]);
+        $stmt = $this->pdo->prepare('SELECT * FROM users WHERE fullname = :fullname LIMIT 1');
+        $stmt->execute([':fullname' => $fullname]);
         $user = $stmt->fetch();
         return $user ?: null;
     }
@@ -50,12 +50,12 @@ class User
     public function create(array $data): bool
     {
         $stmt = $this->pdo->prepare(
-            'INSERT INTO users (username, pwd, email, role, created_at)
-             VALUES (:username, :pwd, :email, :role, NOW())'
+            'INSERT INTO users (fullname, pwd, email, role, created_at)
+             VALUES (:fullname, :pwd, :email, :role, NOW())'
         );
 
         return $stmt->execute([
-            ':username' => $data['username'],
+            ':fullname' => $data['fullname'],
             ':pwd'      => password_hash($data['pwd'], PASSWORD_DEFAULT),
             ':email'    => $data['email'],
             ':role'     => $data['role'] ?? 'student',

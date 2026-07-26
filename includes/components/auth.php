@@ -26,7 +26,7 @@ function classdash_get_current_user(?PDO $pdo): array
 
     try {
         $stmt = $pdo->prepare(
-            'SELECT id, username, role
+            'SELECT id, fullname, role
              FROM users
              WHERE id = :id
              LIMIT 1'
@@ -40,7 +40,7 @@ function classdash_get_current_user(?PDO $pdo): array
 
         return [
             'id'   => (int) $user['id'],
-            'name' => $user['username'] ?: $default['name'],
+            'name' => $user['fullname'] ?: $default['name'],
             'role' => $user['role'] ?: $default['role'],
         ];
     } catch (PDOException $e) {

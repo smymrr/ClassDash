@@ -20,7 +20,7 @@ class Debt
     public function getAll(): array
     {
         $stmt = $this->pdo->query(
-            'SELECT d.*, u.username
+            'SELECT d.*, u.fullname
              FROM debts d
              JOIN users u ON u.id = d.user_id
              ORDER BY d.status ASC, d.due_date ASC'
