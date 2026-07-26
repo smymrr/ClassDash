@@ -1,53 +1,174 @@
 .cd-auth-page {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: var(--cd-bg);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffff;
 }
 
+.cd-auth__brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+.cd-auth__brand-mark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  background: var(--cd-accent);
+  font-weight: 700;
+  font-size: 32px;
+  color: #fff;
+}
+
+.cd-auth__brand-text {
+  color: var(--cd-orange);
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.cd-auth__brand-text i {
+  color: var(--cd-accent);
+  font-weight: 700;
+}
 .cd-auth-form {
-    background: var(--cd-surface);
-    border-radius: var(--cd-radius);
-    padding: 32px;
-    width: 320px;
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
+  background: var(--cd-surface);
+  border-radius: var(--cd-radius);
+  padding: 32px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 14px;
 }
 
 .cd-auth-form h1 {
-    font-size: 20px;
-    margin-bottom: 8px;
+  font-size: 20px;
+  margin-bottom: 8px;
 }
 
 .cd-auth-form label {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    font-size: 13px;
-    color: var(--cd-text-muted);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--cd-text-muted);
 }
 
 .cd-auth-form input {
-    padding: 10px 12px;
-    border: 1px solid var(--cd-border);
-    border-radius: var(--cd-radius-sm);
-    font-size: 14px;
+  padding: 10px 12px;
+  border: 1px solid var(--cd-border);
+  border-radius: var(--cd-radius-sm);
+  font-size: 14px;
+  background: var(--cd-bg);
+
+  &:focus {
+    outline: none;
+    border-color: var(--cd-accent);
+    box-shadow: 0 0 2px 2px rgba(0, 123, 255, 0.25);
+  }
 }
 
 .cd-auth-form button {
-    margin-top: 8px;
-    padding: 10px;
-    border: none;
-    border-radius: var(--cd-radius-sm);
-    background: var(--cd-accent);
-    color: #fff;
-    font-weight: 600;
-    cursor: pointer;
+  margin-top: 8px;
+  padding: 10px;
+  border: none;
+  border-radius: var(--cd-radius-sm);
+  background: var(--cd-accent);
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
 }
 
 .cd-auth-form__error {
-    color: var(--cd-danger);
-    font-size: 13px;
+  position: relative;
+  background: var(--cd-danger-light);
+  border: 1px solid var(--cd-danger);
+  padding: 8px;
+  border-radius: var(--cd-radius-sm);
+}
+
+.cd-auth-form__error p {
+  margin: 0;
+  padding-left: 36px;
+  /* reserve space for the icon */
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--cd-danger);
+}
+
+.cd-auth-form__error svg {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  margin-right: 6px;
+  color: var(--cd-danger);
+}
+
+.cd-auth-password-wrapper {
+  position: relative;
+}
+
+.cd-auth-password-wrapper input {
+  width: 100%;
+  padding-right: 44px;
+  /* reserve space so text doesn't run under the icon */
+  box-sizing: border-box;
+}
+
+.cd-auth-form .cd-auth-password-toggle {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  bottom: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  color: var(--cd-text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+}
+
+.cd-auth-password-toggle:hover {
+  color: var(--cd-text);
+}
+
+.cd-auth-form__footer {
+  margin-top: 8px;
+  font-size: 13px;
+  font-weight: 550;
+  color: var(--cd-text-muted);
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .cd-auth-form {
+    width: 350px;
+    display: flex;
+  }
+
+  
+  .cd-auth-page {
+        background-color: #131a2b;
+        background-image:
+            radial-gradient(circle at center, transparent 40%, rgba(0, 0, 0, 0.45) 100%),
+            linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+        background-size: cover, 10px 50px, 50px 10px;
+    }
 }
