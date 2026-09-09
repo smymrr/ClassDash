@@ -20,11 +20,12 @@ class AuthController
             $user = $userModel->findByEmail($email);
             
             if ($user && $userModel->verifyPassword($password, $user['pwd'])) {
+                session_regenerate_id(true);
                 $_SESSION['user_id'] = $user['id'];
                 $_SESSION['user_role'] = $user['role'];
                 header('Location: /dashboard');
                 exit;
-            } elseif (!$user || !$userModel->verifyPassword($password, $user['pwd'])) {
+            } else {
                 $loginError = 'Invalid email or password. Please try again.';
             }
         }

@@ -9,6 +9,8 @@
 
     <link rel="stylesheet" href="../assets/css/global/variables.css">
     <link rel="stylesheet" href="../assets/css/global/reset.css">
+    <link rel="stylesheet" href="../assets/css/components/button.css">
+    <link rel="stylesheet" href="../assets/css/components/alert.css">
     <link rel="stylesheet" href="../assets/css/pages/login.css">
 
     <script src=" ../assets/js/pages/login.js" defer></script>
@@ -22,7 +24,7 @@
         </div>
         
         <?php if (!empty($loginError)): ?>
-            <div class="cd-auth-form__error">
+            <div class="cd-alert cd-ale">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-alert-icon lucide-circle-alert">
                     <circle cx="12" cy="12" r="10" />
                     <line x1="12" x2="12" y1="8" y2="12" />
@@ -48,7 +50,7 @@
                 </button>
             </div>
         </label>
-        <button type="submit">Sign in</button>
+        <button type="submit" class="cd-btn cd-btn--primary">Sign in</button>
         <p class="cd-auth-form__footer">
             Don't have an account? Contact your class administrator.
         </p>

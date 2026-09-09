@@ -1,7 +1,7 @@
 <?php
 /**
  * config/constants.php
- * Static, non-sensitive app values. Safe to commit to git.
+ * Static, non-sensitive app values.
  */
 
 // Role hierarchy — matches the `role` ENUM on the users table:

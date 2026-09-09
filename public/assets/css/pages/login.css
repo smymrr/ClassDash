@@ -75,17 +75,6 @@
   }
 }
 
-.cd-auth-form button {
-  margin-top: 8px;
-  padding: 10px;
-  border: none;
-  border-radius: var(--cd-radius-sm);
-  background: var(--cd-accent);
-  color: #fff;
-  font-weight: 600;
-  cursor: pointer;
-}
-
 .cd-auth-form__error {
   position: relative;
   background: var(--cd-danger-light);

@@ -91,6 +91,8 @@ function classdash_require_login(): void
  */
 function classdash_require_permission(string $minRole): void
 {
+    classdash_require_login();
+    
     $userRole = $_SESSION['user_role'] ?? null;
 
     $userLevel = ROLE_PERMISSION_LEVELS[$userRole] ?? PHP_INT_MAX;

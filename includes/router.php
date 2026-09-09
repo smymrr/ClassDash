@@ -12,6 +12,9 @@ require_once __DIR__ . '/controllers/MemberController.php';
 
 function route(string $uri): void
 {
+    $path = parse_url($uri, PHP_URL_PATH);
+    $path = trim($path, '/');
+    
     // [controllerClass, method, activeNavKey]
     $routes = [
         ''           => ['DashboardController', 'index', 'dashboard'],
@@ -23,13 +26,19 @@ function route(string $uri): void
         'logout'     => ['AuthController', 'logout', null],
     ];
 
-    if (!array_key_exists($uri, $routes)) {
+    if (!array_key_exists($path, $routes)) {
         http_response_code(404);
         require __DIR__ . '/../public/pages/404.php';
         return;
     }
 
-    [$controllerName, $method, $activeNav] = $routes[$uri];
+    [$controllerName, $method, $activeNav] = $routes[$path];
+    
+    if (!class_exists($controllerName) || !method_exists($controllerName, $method)) {
+        http_response_code(500);
+        echo "Controller or method not found: $controllerName::$method";
+        return;
+    }
 
     // Read by includes/components/sidebar.php when a view includes it.
     $GLOBALS['activeNav'] = $activeNav;
