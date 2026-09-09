@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="../assets/css/global/variables.css">
     <link rel="stylesheet" href="../assets/css/global/reset.css">
     <link rel="stylesheet" href="../assets/css/global/layout.css">
+    <link rel="stylesheet" href="../assets/css/components.css">
     <link rel="stylesheet" href="../assets/css/components/sidebar.css">
     <link rel="stylesheet" href="../assets/css/components/topbar.css">
     <link rel="stylesheet" href="../assets/css/pages/treasury.css">
@@ -16,7 +17,13 @@
 
         <main class="cd-main">
             <?php require __DIR__ . '/../../includes/components/topbar.php'; ?>
-
+            
+            <div class="cd-card cd-card--accent-blue">
+                <h2 class="cd-card__label">Overview</h2>
+                <div class="cd-card__value">Rp 500.000</div>
+                <div class="cd-card__description">Total balance in the treasury</div>
+            </div>
+            
             <table class="cd-table">
                 <thead>
                     <tr>

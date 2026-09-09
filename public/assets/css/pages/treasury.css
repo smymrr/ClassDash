@@ -2,6 +2,7 @@
     background: var(--cd-surface);
     border-radius: var(--cd-radius);
     overflow: hidden;
+    margin-top: 16px;
 }
 
 .cd-table th,

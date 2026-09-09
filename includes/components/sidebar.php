@@ -59,14 +59,14 @@ function classdash_icon(string $name): string
 
     <div class="cd-sidebar__user">
         <div class="cd-sidebar__avatar">
-            <?= htmlspecialchars($userInitial, ENT_QUOTES, 'UTF-8') ?>
+            <?= htmlspecialchars($userInitial) ?>
         </div>
         <div class="cd-sidebar__user-info">
             <div class="cd-sidebar__user-name">
-                <?= htmlspecialchars($currentUser['name'], ENT_QUOTES, 'UTF-8') ?>
+                <?= htmlspecialchars($currentUser['name']) ?>
             </div>
             <span class="cd-sidebar__user-role">
-                <?= htmlspecialchars($currentUser['role'], ENT_QUOTES, 'UTF-8') ?>
+                <?= htmlspecialchars($currentUser['role']) ?>
             </span>
         </div>
     </div>
@@ -76,7 +76,7 @@ function classdash_icon(string $name): string
             <?php foreach ($navItems as $item): ?>
                 <li>
                     <a
-                        href="<?= htmlspecialchars(get_nav_item_href($item['href']), ENT_QUOTES, 'UTF-8') ?>"
+                        href="<?= htmlspecialchars(get_nav_item_href($item['href'])) ?>"
                         class="cd-sidebar__nav-link<?= $activeNav === $item['key'] ? ' is-active' : '' ?>"
                         <?= $activeNav === $item['key'] ? 'aria-current="page"' : '' ?>
                     >
@@ -85,7 +85,7 @@ function classdash_icon(string $name): string
                              stroke-linejoin="round">
                             <?= classdash_icon($item['icon']) ?>
                         </svg>
-                        <span><?= htmlspecialchars($item['label'], ENT_QUOTES, 'UTF-8') ?></span>
+                        <span><?= htmlspecialchars($item['label']) ?></span>
                     </a>
                 </li>
             <?php endforeach; ?>

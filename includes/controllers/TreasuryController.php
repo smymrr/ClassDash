@@ -14,9 +14,21 @@ class TreasuryController
 
         classdash_require_login();
 
-        $pageTitle    = 'Treasury';
-        $pageSubtitle = 'Track class dues, expenses, and debts';
-
+        $pageTitle    = 'Kas Kelas';
+        $pageSubtitle = 'Lacak iuran kelas, pengeluaran, dan saldo saat ini.';
+        $pageActions = [
+            [
+                'label' => '+ Tambah Pemasukan',
+                'url' => '/treasury/add',
+                'class' => 'cd-btn--primary',
+            ],
+            [
+                'label' => '+ Tambah Pengeluaran',
+                'url' => '/treasury/add-expense',
+                'class' => 'cd-btn--secondary',
+            ]
+        ];
+        
         $transactionModel = new Transaction($pdo);
         $currentBalance     = $transactionModel->getCurrentBalance();
         $totalUnpaidDebts   = $transactionModel->getTotalUnpaidDebts();

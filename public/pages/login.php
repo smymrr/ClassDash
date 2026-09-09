@@ -9,8 +9,7 @@
 
     <link rel="stylesheet" href="../assets/css/global/variables.css">
     <link rel="stylesheet" href="../assets/css/global/reset.css">
-    <link rel="stylesheet" href="../assets/css/components/button.css">
-    <link rel="stylesheet" href="../assets/css/components/alert.css">
+    <link rel="stylesheet" href="../assets/css/components.css">
     <link rel="stylesheet" href="../assets/css/pages/login.css">
 
     <script src=" ../assets/js/pages/login.js" defer></script>
@@ -24,7 +23,7 @@
         </div>
         
         <?php if (!empty($loginError)): ?>
-            <div class="cd-alert cd-ale">
+            <div class="cd-alert cd-alert--danger">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-alert-icon lucide-circle-alert">
                     <circle cx="12" cy="12" r="10" />
                     <line x1="12" x2="12" y1="8" y2="12" />
@@ -34,14 +33,14 @@
             </div>
         <?php endif; ?>
 
-        <label>
+        <label class="cd-field">
             Email
-            <input type="email" name="email" placeholder="you@school.edu" required>
+            <input class="cd-input" type="email" name="email" placeholder="you@school.edu" required>
         </label>
-        <label>
+        <label class="cd-field">
             Password
             <div class="cd-auth-password-wrapper">
-                <input type="password" name="password" placeholder="••••••••" required>
+                <input class="cd-input" type="password" name="password" placeholder="••••••••" required>
                 <button type="button" class="cd-auth-form cd-auth-password-toggle" aria-label="Toggle password visibility" onclick="toggleCdPassword(this)">
                     <svg class="cd-auth-password-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18">
                         <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
