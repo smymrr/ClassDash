@@ -19,14 +19,14 @@ class TreasuryController
         $pageActions = [
             [
                 'label' => '+ Tambah Pemasukan',
-                'url' => '/treasury/add',
+                'url' => 'javascript:openModal("modal-add-income")',
                 'class' => 'cd-btn--primary',
             ],
             [
                 'label' => '+ Tambah Pengeluaran',
-                'url' => '/treasury/add-expense',
+                'url' => 'javascript:openModal("modal-add-expense")',
                 'class' => 'cd-btn--secondary',
-            ]
+            ],
         ];
         
         $transactionModel = new Transaction($pdo);

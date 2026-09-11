@@ -49,5 +49,9 @@
             </table>
         </main>
     </div>
+    
+    <?php require __DIR__ . '/../../includes/modals/add_income.php'; ?>
+    <?php require __DIR__ . '/../../includes/modals/add_expense.php'; ?>
+    <script src="../assets/js/components/modal.js" defer></script>
 </body>
 </html>

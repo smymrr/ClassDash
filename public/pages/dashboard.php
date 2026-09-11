@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../assets/css/global/layout.css">
     <link rel="stylesheet" href="../assets/css/components/sidebar.css">
     <link rel="stylesheet" href="../assets/css/components/topbar.css">
-    <link rel="stylesheet" href="../assets/css/components/cards.css">
+    <link rel="stylesheet" href="../assets/css/components.css">
     <link rel="stylesheet" href="../assets/css/pages/dashboard.css">
 </head>
 <body>

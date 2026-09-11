@@ -15,7 +15,7 @@ class MemberController
         classdash_require_login();
 
         $pageTitle    = 'Members';
-        $pageSubtitle = 'Everyone in the class roster';
+        $pageSubtitle = 'Daftar anggota kelas';
 
         $memberModel = new Member($pdo);
         $members       = $memberModel->getAllWithDebtTotals();

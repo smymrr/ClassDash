@@ -20,7 +20,7 @@ class DashboardController
         $announcementModel = new Announcement($pdo);
 
         $pageTitle    = 'Dashboard';
-        $pageSubtitle = 'Welcome back, ' . $currentUser['name'];
+        $pageSubtitle = 'Selamat Datang, ' . $currentUser['name'];
 
         $currentBalance      = $transactionModel->getCurrentBalance();
         $totalUnpaidDebts    = $transactionModel->getTotalUnpaidDebts();

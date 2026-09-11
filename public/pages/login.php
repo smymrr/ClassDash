@@ -22,6 +22,7 @@
             <span class="cd-auth__brand-text">Class<i>Dash</i></span>
         </div>
         
+        <!-- Error Message -->
         <?php if (!empty($loginError)): ?>
             <div class="cd-alert cd-alert--danger">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-alert-icon lucide-circle-alert">
@@ -33,10 +34,13 @@
             </div>
         <?php endif; ?>
 
+        <!-- Email -->
         <label class="cd-field">
             Email
             <input class="cd-input" type="email" name="email" placeholder="you@school.edu" required>
         </label>
+        
+        <!-- Password -->
         <label class="cd-field">
             Password
             <div class="cd-auth-password-wrapper">
@@ -49,6 +53,8 @@
                 </button>
             </div>
         </label>
+        
+        <!-- Submit Button -->
         <button type="submit" class="cd-btn cd-btn--primary">Sign in</button>
         <p class="cd-auth-form__footer">
             Don't have an account? Contact your class administrator.
