@@ -5,13 +5,11 @@
  * (set by includes/router.php) to already be in scope.
  */
 
-require_once __DIR__ . '/auth.php';
+require_once dirname(__DIR__, 2) . '/app/core/auth.php';
 
 $currentUser = classdash_get_current_user($pdo ?? null);
+$userInitial = get_initial($currentUser['name']);
 
-$userInitial = $currentUser['name'] !== ''
-    ? strtoupper(mb_substr($currentUser['name'], 0, 1))
-    : 'PLACEHOLDER_USER_INITIAL_SIDEBAR';
 
 // Fallback if a view is rendered without going through the router.
 $activeNav = $activeNav ?? '';
@@ -46,19 +44,34 @@ function classdash_icon(string $name): string
         'users' => '<circle cx="9" cy="8" r="3"/><path d="M2 20c0-3.3 3.1-6 7-6s7 2.7 7 6"/><circle cx="17" cy="9" r="2.5"/><path d="M22 20c0-2.6-2-4.7-5-5.4"/>',
         'settings' => '<circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1-1.6 1.7 1.7 0 0 0-1.9.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.6-1 1.7 1.7 0 0 0-.3-1.9l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.9.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.9-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.9V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/>',
         'logout' => '<path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/>',
+        'close' => '<line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>',
     ];
 
     return $icons[$name] ?? '';
 }
 ?>
-<aside class="cd-sidebar">
-    <div class="cd-sidebar__brand">
-        <span class="cd-sidebar__brand-mark">&#8722;</span>
-        <span class="cd-sidebar__brand-text">Class<strong>Dash</strong></span>
+
+<!-- Backdrop for mobile drawer blur/overlay -->
+<div class="cd-sidebar-backdrop" id="cdSidebarBackdrop" aria-hidden="true"></div>
+
+<aside class="cd-sidebar" id="cdSidebar">
+    <div class="cd-brand">
+        <div class="cd-brand-main">
+            <span class="cd-brand-mark">&#8722;</span>
+            <span class="cd-brand-text">Class<strong>Dash</strong></span>
+        </div>
+        
+        <!-- Mobile close button -->
+        <button type="button" class="cd-sidebar__close" id="cdSidebarClose" aria-label="Close menu">
+            <svg class="cd-sidebar__nav-icon" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <?= classdash_icon('close') ?>
+            </svg>
+        </button>
     </div>
 
     <div class="cd-sidebar__user">
-        <div class="cd-sidebar__avatar">
+        <div class="cd-avatar">
             <?= htmlspecialchars($userInitial) ?>
         </div>
         <div class="cd-sidebar__user-info">
@@ -93,7 +106,7 @@ function classdash_icon(string $name): string
     </nav>
 
     <div class="cd-sidebar__footer">
-        <a href="/account" class="cd-sidebar__nav-link">
+        <a href="<?= htmlspecialchars(get_nav_item_href('/account')) ?>" class="cd-sidebar__nav-link">
             <svg class="cd-sidebar__nav-icon" viewBox="0 0 24 24" fill="none"
                  stroke="currentColor" stroke-width="2" stroke-linecap="round"
                  stroke-linejoin="round">
@@ -101,7 +114,7 @@ function classdash_icon(string $name): string
             </svg>
             <span>Account</span>
         </a>
-        <a href="/logout" class="cd-sidebar__nav-link cd-sidebar__nav-link--danger">
+        <a href="<?= htmlspecialchars(get_nav_item_href('/logout')) ?>" class="cd-sidebar__nav-link cd-sidebar__nav-link--danger">
             <svg class="cd-sidebar__nav-icon" viewBox="0 0 24 24" fill="none"
                  stroke="currentColor" stroke-width="2" stroke-linecap="round"
                  stroke-linejoin="round">

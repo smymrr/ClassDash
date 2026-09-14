@@ -3,7 +3,7 @@
  * includes/controllers/MemberController.php
  */
 
-require_once __DIR__ . '/../components/auth.php';
+require_once __DIR__ . '/../core/auth.php';
 require_once __DIR__ . '/../models/Member.php';
 
 class MemberController

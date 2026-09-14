@@ -3,7 +3,7 @@
  * includes/controllers/InfoBoardController.php
  */
 
-require_once __DIR__ . '/../components/auth.php';
+require_once __DIR__ . '/../core/auth.php';
 require_once __DIR__ . '/../models/Announcement.php';
 
 class InfoBoardController

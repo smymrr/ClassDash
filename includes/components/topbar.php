@@ -1,22 +1,23 @@
 <?php
 /**
  * includes/components/topbar.php
- * Optional page header. Expects $pageTitle and $pageSubtitle from the
- * controller, e.g.: $pageTitle = 'Dashboard'; $pageSubtitle = 'Welcome back, ' . $currentUser['name'];
+ * Expects $pageTitle, $pageSubtitle, and optional $pageActions from controller/view.
  */
 ?>
 <header class="cd-topbar">
-    <!-- Left Group: Title + Subtitle wrapped together -->
-    <div>
-        <h1 class="cd-topbar__title">
-            <?= htmlspecialchars($pageTitle ?? 'Dashboard') ?>
-        </h1>
-        
-        <?php if (!empty($pageSubtitle)): ?>
-            <p class="cd-topbar__subtitle">
-                <?= htmlspecialchars($pageSubtitle) ?>
-            </p>
-        <?php endif; ?>
+    <!-- Left Group: Mobile Toggle + Title + Subtitle -->
+    <div class="cd-topbar__left">
+        <div class="cd-topbar__titles">
+            <h1 class="cd-topbar__title">
+                <?= htmlspecialchars($pageTitle ?? 'Dashboard') ?>
+            </h1>
+            
+            <?php if (!empty($pageSubtitle)): ?>
+                <p class="cd-topbar__subtitle">
+                    <?= htmlspecialchars($pageSubtitle) ?>
+                </p>
+            <?php endif; ?>
+        </div>
     </div>
 
     <!-- Right Group: Actions Wrapper -->

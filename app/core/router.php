@@ -4,11 +4,11 @@
  * Maps clean URLs to controller methods and sets $activeNav for the sidebar.
  */
 
-require_once __DIR__ . '/controllers/AuthController.php';
-require_once __DIR__ . '/controllers/DashboardController.php';
-require_once __DIR__ . '/controllers/InfoBoardController.php';
-require_once __DIR__ . '/controllers/TreasuryController.php';
-require_once __DIR__ . '/controllers/MemberController.php';
+require_once __DIR__ . '/../controllers/AuthController.php';
+require_once __DIR__ . '/../controllers/DashboardController.php';
+require_once __DIR__ . '/../controllers/InfoBoardController.php';
+require_once __DIR__ . '/../controllers/TreasuryController.php';
+require_once __DIR__ . '/../controllers/MemberController.php';
 
 function route(string $uri): void
 {

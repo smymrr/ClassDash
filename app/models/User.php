@@ -1,4 +1,5 @@
 <?php
+
 /**
  * includes/models/User.php
  * Maps to the `users` table:
@@ -20,7 +21,7 @@ class User
         $stmt = $this->pdo->prepare($query);
         $stmt->execute([':id' => $id]);
         $user = $stmt->fetch();
-        
+
         return $user ?: null;
     }
 
@@ -30,7 +31,7 @@ class User
         $stmt = $this->pdo->prepare($query);
         $stmt->execute([':email' => $email]);
         $user = $stmt->fetch();
-        
+
         return $user ?: null;
     }
 
@@ -40,31 +41,31 @@ class User
         $stmt = $this->pdo->prepare($query);
         $stmt->execute([':fullname' => $fullname]);
         $user = $stmt->fetch();
-        
+
         return $user ?: null;
     }
-    
+
     public function findAll(): array
     {
         $query = 'SELECT * FROM users';
         $stmt = $this->pdo->prepare($query);
         $stmt->execute();
-        
+
         return $stmt->fetchAll();
     }
-    
+
     public function verifyPassword(string $plainPassword, string $hashedPassword): bool
     {
         return password_verify($plainPassword, $hashedPassword);
     }
-    
+
     public function updatePassword(int $userId, string $newPlainPassword): bool
     {
         $hashedPassword = password_hash($newPlainPassword, PASSWORD_DEFAULT);
-        
+
         $query = 'UPDATE users SET pwd = :pwd, updated_at = NOW() WHERE id = :id';
         $stmt = $this->pdo->prepare($query);
-        
+
         return $stmt->execute([':pwd' => $hashedPassword, ':id' => $userId]);
     }
 

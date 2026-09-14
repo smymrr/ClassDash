@@ -3,7 +3,7 @@
  * includes/controllers/DashboardController.php
  */
 
-require_once __DIR__ . '/../components/auth.php';
+require_once __DIR__ . '/../core/auth.php';
 require_once __DIR__ . '/../models/Transaction.php';
 require_once __DIR__ . '/../models/Announcement.php';
 
