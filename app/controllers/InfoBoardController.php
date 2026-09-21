@@ -15,7 +15,7 @@ class InfoBoardController
         classdash_require_login();
 
         $pageTitle = 'Info Board';
-        $pageSubtitle = 'Pengumuman, acara, dan jadwal.';
+        $pageSubtitle = '';
 
         $announcementModel = new Announcement($pdo);
         $announcements = $announcementModel->getRecent(50);

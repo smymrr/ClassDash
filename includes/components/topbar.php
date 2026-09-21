@@ -1,4 +1,5 @@
 <?php
+
 /**
  * includes/components/topbar.php
  * Expects $pageTitle, $pageSubtitle, and optional $pageActions from controller/view.
@@ -24,10 +25,13 @@
     <?php if (!empty($pageActions)): ?>
         <div class="cd-topbar__actions">
             <?php foreach ($pageActions as $action): ?>
-                <a href="<?= htmlspecialchars($action['url']) ?>" 
-                   class="cd-btn <?= htmlspecialchars($action['class'] ?? 'cd-btn--primary') ?>">
+                <button
+                    type="button"
+                    class="cd-btn <?= htmlspecialchars($action['class']) ?>"
+                    data-modal-target="<?= htmlspecialchars($action['action']) ?>"
+                    onclick="openModal('<?= htmlspecialchars($action['action']) ?>')">
                     <?= htmlspecialchars($action['label']) ?>
-                </a>
+                </button>
             <?php endforeach; ?>
         </div>
     <?php endif; ?>

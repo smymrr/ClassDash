@@ -15,16 +15,16 @@ class TreasuryController
         classdash_require_login();
 
         $pageTitle    = 'Kas Kelas';
-        $pageSubtitle = 'Lacak iuran kelas, pengeluaran, dan saldo saat ini.';
+        $pageSubtitle = '';
         $pageActions = [
             [
                 'label' => '+ Tambah Pemasukan',
-                'url' => 'javascript:openModal("modal-add-income")',
+                'action' => 'modal-add-income',
                 'class' => 'cd-btn--primary',
             ],
             [
                 'label' => '+ Tambah Pengeluaran',
-                'url' => 'javascript:openModal("modal-add-expense")',
+                'action' => 'modal-add-expense',
                 'class' => 'cd-btn--secondary',
             ],
         ];
