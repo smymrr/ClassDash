@@ -35,7 +35,6 @@ require dirname(__DIR__, 2) . '/includes/layouts/header.php';
 </table>
 
 <?php
-array_push($scripts, '../assets/js/components/modal.js');
 require dirname(__DIR__, 2) . '/includes/modals/modal_add_income.php';
 require dirname(__DIR__, 2) . '/includes/modals/modal_add_expense.php';
 require dirname(__DIR__, 2) . '/includes/layouts/footer.php';

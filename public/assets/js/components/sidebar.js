@@ -3,19 +3,15 @@
 // Wire a button with id="sidebarToggle" in your topbar to use this.
 
 document.addEventListener('DOMContentLoaded', () => {
-    console.log("pre-check");
     const sidebar = document.getElementById('cdSidebar');
     const backdrop = document.getElementById('cdSidebarBackdrop');
     const closeBtn = document.getElementById('cdSidebarClose');
     const toggleBtn = document.getElementById('cdSidebarToggle'); // Place this hamburger button in your main top header/nav
 
-    console.log("pre-check");
     if (!sidebar || !toggleBtn) {
         console.log("Sidebar not found");
         return
     }
-    
-    console.log("Sidebar found");
     
     function openSidebar() {
         sidebar.classList.add('is-open');

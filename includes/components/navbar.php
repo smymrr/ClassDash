@@ -1,7 +1,7 @@
 <?php 
 require_once dirname(__DIR__, 2) . '/app/core/auth.php';
 
-$scripts = ['/assets/js/components/sidebar.js'];
+$scripts = ['/assets/js/components/sidebar.js', '../assets/js/components/modal.js'];
 
 $currentUser = classdash_get_current_user($pdo ?? null);
 $userInitial = get_initial($currentUser['name']);
