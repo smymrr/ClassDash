@@ -3,7 +3,7 @@
  * includes/controllers/InfoBoardController.php
  */
 
-require_once __DIR__ . '/../components/auth.php';
+require_once __DIR__ . '/../core/auth.php';
 require_once __DIR__ . '/../models/Announcement.php';
 
 class InfoBoardController
@@ -15,7 +15,7 @@ class InfoBoardController
         classdash_require_login();
 
         $pageTitle = 'Info Board';
-        $pageSubtitle = 'Announcements, events, and schedules';
+        $pageSubtitle = '';
 
         $announcementModel = new Announcement($pdo);
         $announcements = $announcementModel->getRecent(50);

@@ -37,6 +37,7 @@
   color: var(--cd-accent);
   font-weight: 700;
 }
+
 .cd-auth-form {
   background: var(--cd-surface);
   border-radius: var(--cd-radius);
@@ -51,28 +52,6 @@
 .cd-auth-form h1 {
   font-size: 20px;
   margin-bottom: 8px;
-}
-
-.cd-auth-form label {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  font-size: 13px;
-  color: var(--cd-text-muted);
-}
-
-.cd-auth-form input {
-  padding: 10px 12px;
-  border: 1px solid var(--cd-border);
-  border-radius: var(--cd-radius-sm);
-  font-size: 14px;
-  background: var(--cd-bg);
-
-  &:focus {
-    outline: none;
-    border-color: var(--cd-accent);
-    box-shadow: 0 0 2px 2px rgba(0, 123, 255, 0.25);
-  }
 }
 
 .cd-auth-form__error {
@@ -151,7 +130,6 @@
     display: flex;
   }
 
-  
   .cd-auth-page {
         background-color: #131a2b;
         background-image:

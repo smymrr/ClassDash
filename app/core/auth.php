@@ -1,4 +1,5 @@
 <?php
+
 /**
  * includes/components/auth.php
  * Auth/user-data helpers shared across controllers and views.
@@ -92,7 +93,7 @@ function classdash_require_login(): void
 function classdash_require_permission(string $minRole): void
 {
     classdash_require_login();
-    
+
     $userRole = $_SESSION['user_role'] ?? null;
 
     $userLevel = ROLE_PERMISSION_LEVELS[$userRole] ?? PHP_INT_MAX;
@@ -103,4 +104,12 @@ function classdash_require_permission(string $minRole): void
         require __DIR__ . '/../../public/pages/403.php';
         exit;
     }
+}
+
+function get_initial(string $fullName): string
+{
+    $userInitial = $fullName !== ''
+        ? strtoupper(mb_substr($fullName, 0, 1))
+        : 'P';
+    return $userInitial;
 }

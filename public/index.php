@@ -6,7 +6,7 @@
  */
 
 require_once __DIR__ . '/../config/config.php';
-require_once __DIR__ . '/../includes/router.php';
+require_once __DIR__ . '/../app/core/router.php';
 
 $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 

@@ -3,7 +3,7 @@
  * includes/controllers/MemberController.php
  */
 
-require_once __DIR__ . '/../components/auth.php';
+require_once __DIR__ . '/../core/auth.php';
 require_once __DIR__ . '/../models/Member.php';
 
 class MemberController
@@ -15,7 +15,7 @@ class MemberController
         classdash_require_login();
 
         $pageTitle    = 'Members';
-        $pageSubtitle = 'Everyone in the class roster';
+        $pageSubtitle = '';
 
         $memberModel = new Member($pdo);
         $members       = $memberModel->getAllWithDebtTotals();

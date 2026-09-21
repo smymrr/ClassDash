@@ -1,24 +1,322 @@
-.cd-table {
-    background: var(--cd-surface);
-    border-radius: var(--cd-radius);
-    overflow: hidden;
+/* assets/css/pages/members.css
+   Mobile-first: each member is a card row on small screens,
+   and the same markup becomes a real table from 768px up. */
+
+/* ---------- Toolbar ---------- */
+
+.cd-members__add {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 44px;
+    padding: 0 16px;
+    border-radius: 10px;
+    background: var(--cd-accent);
+    color: #fff;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
 }
 
-.cd-table th,
-.cd-table td {
-    text-align: left;
-    padding: 12px 16px;
-    font-size: 14px;
+.cd-members__add svg {
+    width: 16px;
+    height: 16px;
+    flex: none;
+}
+
+.cd-members__add:focus-visible,
+.cd-members .cd-kebab:focus-visible {
+    outline: 2px solid var(--cd-accent);
+    outline-offset: 2px;
+}
+
+/* ---------- Card ---------- */
+
+.cd-members__card {
+    background: var(--cd-surface);
+    border: 1px solid var(--cd-border);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 1px 2px rgba(20, 25, 50, 0.04);
+}
+
+/* ---------- Table -> cards (mobile base) ---------- */
+
+.cd-members .cd-members-table {
+    display: block;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.cd-members .cd-members-table tbody {
+    display: block;
+}
+
+/* Header row is hidden visually on mobile but stays for screen readers */
+.cd-members .cd-members-table thead {
+    display: block;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+}
+
+.cd-members .cd-members-table tr {
+    display: block;
+}
+
+.cd-members .cd-members-table td {
+    display: block;
+    padding: 0;
+    border: 0;
+}
+
+.cd-members .cd-members-table .cd-member {
+    display: grid;
+    grid-template-columns: 44px auto auto minmax(0, 1fr) auto;
+    grid-template-areas:
+        "avatar name  role  .     actions"
+        "avatar email email email actions"
+        "avatar debt  debt  debt  actions";
+    align-items: center;
+    padding: 14px 8px 14px 16px;
     border-bottom: 1px solid var(--cd-border);
 }
 
-.cd-table th {
-    color: var(--cd-text-muted);
-    font-weight: 600;
-    font-size: 12px;
-    text-transform: uppercase;
+.cd-members .cd-members-table .cd-member:last-child {
+    border-bottom: 0;
 }
 
-.cd-table tr:last-child td {
-    border-bottom: none;
+.cd-members .cd-members-table .cd-member__avatar {
+    grid-area: avatar;
+    margin-right: 12px;
+}
+
+.cd-members .cd-members-table .cd-member__name {
+    grid-area: name;
+    min-width: 0;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    line-height: 1.3;
+    overflow-wrap: anywhere;
+    padding-left: 6px;
+}
+
+.cd-members .cd-members-table .cd-member__role {
+    grid-area: role;
+    margin-left: 8px;
+}
+
+.cd-members .cd-members-table .cd-member__email {
+    grid-area: email;
+    min-width: 0;
+    margin-top: 2px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: var(--cd-text-muted);
+    font-size: 0.8125rem;
+    padding-left: 6px;
+}
+
+.cd-members .cd-members-table .cd-member__debt {
+    grid-area: debt;
+    margin-top: 2px;
+    color: var(--cd-text-muted);
+    font-size: 0.8125rem;
+}
+
+.cd-members .cd-members-table .cd-member__debt::before {
+    content: attr(data-label) ": ";
+}
+
+.cd-members .cd-members-table .cd-member__debt--due {
+    color: #b45309;
+    font-weight: 600;
+}
+
+/* On mobile, only show the debt line when something is owed */
+.cd-members .cd-members-table .cd-member__debt--none {
+    display: none;
+}
+
+.cd-members .cd-members-table .cd-member__actions {
+    grid-area: actions;
+}
+
+.cd-members .cd-members-table .cd-members__empty {
+    padding: 32px 16px;
+    text-align: center;
+    color: var(--cd-text-muted);
+}
+
+/* ---------- Avatar, role badge, kebab ---------- */
+
+.cd-members .cd-avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--cd-accent);
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.cd-members .cd-role {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 6px;
+    background: #f1f2f6;
+    color: #5d6378;
+    font-size: 0.75rem;
+    font-weight: 600;
+    line-height: 1.5;
+    white-space: nowrap;
+}
+
+.cd-members .cd-role--president      { background: #e8f0ff; color: #3a6ee0; }
+.cd-members .cd-role--vice-president { background: #ebe9ff; color: #5a3fd4; }
+.cd-members .cd-role--treasurer      { background: #f1e9ff; color: #7b3fe0; }
+.cd-members .cd-role--secretary      { background: #e2f6f0; color: #0d8f74; }
+
+.cd-members .cd-kebab {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: transparent;
+    color: var(--cd-text-muted);
+    cursor: pointer;
+}
+
+.cd-members .cd-kebab:hover {
+    background: var(--cd-hover);
+    color: var(--cd-text);
+}
+
+.cd-members .cd-kebab svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* ---------- Tablet / desktop: real table ---------- */
+
+@media (min-width: 768px) {
+    .cd-members__title {
+        font-size: 1.5rem;
+    }
+
+    .cd-members .cd-members-table {
+        display: table;
+    }
+
+    .cd-members .cd-members-table thead {
+        display: table-header-group;
+        position: static;
+        width: auto;
+        height: auto;
+        margin: 0;
+        overflow: visible;
+        clip: auto;
+        white-space: normal;
+    }
+
+    .cd-members .cd-members-table tbody {
+        display: table-row-group;
+    }
+
+    .cd-members .cd-members-table tr,
+    .cd-members .cd-members-table .cd-member {
+        display: table-row;
+        padding: 0;
+        border-bottom: 0;
+    }
+
+    .cd-members .cd-members-table th,
+    .cd-members .cd-members-table td {
+        display: table-cell;
+        padding: 14px 16px;
+        border-bottom: 1px solid var(--cd-border);
+        vertical-align: middle;
+        text-align: left;
+    }
+
+    .cd-members .cd-members-table th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        background: #f8f9fc;
+        color: var(--cd-text-muted);
+        font-size: 0.75rem;
+        font-weight: 600;
+    }
+
+    .cd-members .cd-members-table .cd-member:last-child td {
+        border-bottom: 0;
+    }
+
+    .cd-members .cd-members-table .cd-member:hover td {
+        background: var(--cd-hover);
+    }
+
+    .cd-members .cd-members-table th:first-child,
+    .cd-members .cd-members-table .cd-member__avatar {
+        padding-left: 20px;
+    }
+
+    .cd-members .cd-members-table .cd-member__avatar {
+        width: 1%;
+        margin: 0;
+        padding-right: 0;
+    }
+
+    .cd-members .cd-avatar {
+        width: 32px;
+        height: 32px;
+        font-size: 0.75rem;
+    }
+
+    .cd-members .cd-members-table .cd-member__name {
+        padding-left: 12px;
+        font-size: 0.875rem;
+    }
+
+    .cd-members .cd-members-table .cd-member__role {
+        margin: 0;
+    }
+
+    .cd-members .cd-members-table .cd-member__email,
+    .cd-members .cd-members-table .cd-member__debt {
+        margin: 0;
+        overflow: visible;
+        text-overflow: clip;
+        white-space: normal;
+        font-size: 0.875rem;
+    }
+
+    .cd-members .cd-members-table .cd-member__debt::before {
+        content: none;
+    }
+
+    /* Show "Rp 0" in the table; the mobile card hides it */
+    .cd-members .cd-members-table .cd-member__debt--none {
+        display: table-cell;
+    }
+
+    .cd-members .cd-members-table .cd-members__empty {
+        padding: 40px 16px;
+        text-align: center;
+    }
 }

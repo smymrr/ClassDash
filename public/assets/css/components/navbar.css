@@ -1,0 +1,31 @@
+/* Navbar */
+.cd-navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--cd-navy);
+    padding: 12px 16px;
+    color: #ffffff;
+}
+
+.cd-navbar__left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.cd-navbar__toggle {
+    background: rgba(255, 255, 255, 0.08);
+    border: none;
+    color: #fff;
+    padding: 8px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+}
+
+@media (min-width: 768px) {
+    .cd-navbar {
+        display: none;
+    }
+}

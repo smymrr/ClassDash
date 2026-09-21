@@ -1,4 +1,5 @@
 <?php
+
 /**
  * includes/models/User.php
  * Maps to the `users` table:
@@ -16,31 +17,56 @@ class User
 
     public function findById(int $id): ?array
     {
-        $stmt = $this->pdo->prepare('SELECT * FROM users WHERE id = :id LIMIT 1');
+        $query = 'SELECT * FROM users WHERE id = :id LIMIT 1';
+        $stmt = $this->pdo->prepare($query);
         $stmt->execute([':id' => $id]);
         $user = $stmt->fetch();
+
         return $user ?: null;
     }
 
     public function findByEmail(string $email): ?array
     {
-        $stmt = $this->pdo->prepare('SELECT * FROM users WHERE email = :email LIMIT 1');
+        $query = 'SELECT * FROM users WHERE email = :email LIMIT 1';
+        $stmt = $this->pdo->prepare($query);
         $stmt->execute([':email' => $email]);
         $user = $stmt->fetch();
+
         return $user ?: null;
     }
 
     public function findByUsername(string $fullname): ?array
     {
-        $stmt = $this->pdo->prepare('SELECT * FROM users WHERE fullname = :fullname LIMIT 1');
+        $query = 'SELECT * FROM users WHERE fullname = :fullname LIMIT 1';
+        $stmt = $this->pdo->prepare($query);
         $stmt->execute([':fullname' => $fullname]);
         $user = $stmt->fetch();
+
         return $user ?: null;
+    }
+
+    public function findAll(): array
+    {
+        $query = 'SELECT * FROM users';
+        $stmt = $this->pdo->prepare($query);
+        $stmt->execute();
+
+        return $stmt->fetchAll();
     }
 
     public function verifyPassword(string $plainPassword, string $hashedPassword): bool
     {
         return password_verify($plainPassword, $hashedPassword);
+    }
+
+    public function updatePassword(int $userId, string $newPlainPassword): bool
+    {
+        $hashedPassword = password_hash($newPlainPassword, PASSWORD_DEFAULT);
+
+        $query = 'UPDATE users SET pwd = :pwd, updated_at = NOW() WHERE id = :id';
+        $stmt = $this->pdo->prepare($query);
+
+        return $stmt->execute([':pwd' => $hashedPassword, ':id' => $userId]);
     }
 
     /**
@@ -49,10 +75,11 @@ class User
      */
     public function create(array $data): bool
     {
-        $stmt = $this->pdo->prepare(
-            'INSERT INTO users (fullname, pwd, email, role, created_at)
-             VALUES (:fullname, :pwd, :email, :role, NOW())'
-        );
+        $query = '
+            INSERT INTO users (fullname, pwd, email, role, created_at)
+            VALUES (:fullname, :pwd, :email, :role, NOW())
+        ';
+        $stmt = $this->pdo->prepare($query);
 
         return $stmt->execute([
             ':fullname' => $data['fullname'],
