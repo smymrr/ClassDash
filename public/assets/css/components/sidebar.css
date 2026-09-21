@@ -1,42 +1,28 @@
+/* ==========================================
+   Mobile Default (Drawer Overlay Layout)
+   ========================================== */
 .cd-sidebar {
-    width: 240px;
-    min-height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 50;
+    width: 280px; /* Slightly wider touch area for mobile drawer */
+    max-width: 85vw; /* Prevents overflow on tiny screens */
+    height: 100vh;
+    height: 100dvh; /* Dynamic viewport height support */
     background: var(--cd-sidebar-bg);
     color: #e7e9f1;
     display: flex;
     flex-direction: column;
     padding: 20px 16px;
     box-sizing: border-box;
+    transform: translateX(-100%);
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 4px 0 24px rgba(0, 0, 0, 0.25);
 }
 
-.cd-sidebar__brand {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 4px 8px 20px;
-}
-
-.cd-sidebar__brand-mark {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 28px;
-    height: 28px;
-    border-radius: 8px;
-    background: var(--cd-accent);
-    font-weight: 700;
-    font-size: 16px;
-    color: #fff;
-}
-
-.cd-sidebar__brand-text {
-    font-size: 16px;
-    font-weight: 500;
-}
-
-.cd-sidebar__brand-text strong {
-    color: var(--cd-accent);
-    font-weight: 700;
+.cd-sidebar.is-open {
+    transform: translateX(0);
 }
 
 .cd-sidebar__user {
@@ -46,20 +32,6 @@
     padding: 10px 8px;
     margin-bottom: 12px;
     border-radius: var(--cd-radius);
-}
-
-.cd-sidebar__avatar {
-    flex-shrink: 0;
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    background: var(--cd-accent);
-    color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 600;
-    font-size: 14px;
 }
 
 .cd-sidebar__user-info {
@@ -91,6 +63,7 @@
     border-top: 1px solid #262c40;
     padding-top: 14px;
     flex: 1;
+    overflow-y: auto; /* Allow scrolling if menu items overflow small phone screens */
 }
 
 .cd-sidebar__nav ul {
@@ -103,7 +76,7 @@
     display: flex;
     align-items: center;
     gap: 12px;
-    padding: 10px 12px;
+    padding: 12px; /* Increased touch target height for mobile ergonomics */
     border-radius: var(--cd-radius-sm);
     color: #8b90a6;
     text-decoration: none;
@@ -145,18 +118,59 @@
     color: var(--cd-danger);
 }
 
-@media (max-width: 768px) {
+/* Backdrop Overlay (Mobile Only) */
+.cd-sidebar-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(4px);
+    z-index: 40;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+}
+
+.cd-sidebar-backdrop.is-active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.cd-sidebar__close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    color: #8b90a6;
+    padding: 6px;
+    cursor: pointer;
+    border-radius: var(--cd-radius-sm);
+}
+
+.cd-sidebar__close:hover {
+    color: #fff;
+}
+
+/* ==========================================
+   Desktop Enhancement (Desktop Sidebar)
+   ========================================== */
+@media (min-width: 1024px) {
     .cd-sidebar {
-        position: fixed;
-        top: 0;
-        left: 0;
-        transform: translateX(-100%);
-        z-index: 40;
-        transition: transform 0.2s ease;
-        box-shadow: 4px 0 24px rgba(0, 0, 0, 0.25);
+        position: static;
+        transform: none;
+        width: 240px;
+        height: auto;
+        min-height: 100vh;
+        box-shadow: none;
+        z-index: auto;
     }
 
-    .cd-sidebar.is-open {
-        transform: translateX(0);
+    .cd-sidebar__nav-link {
+        padding: 10px 12px;
+    }
+    
+    .cd-sidebar-backdrop,
+    .cd-sidebar__close {
+        display: none !important;
     }
 }
