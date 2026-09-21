@@ -3,11 +3,11 @@
  * includes/modals/add_income_modal.php
  */
 ?>
-<div id="modal-add-income" class="cd-modal-overlay hidden">
+<div id="modal-add-expense" class="cd-modal-overlay hidden">
     <div class="cd-modal">
         <header class="cd-modal__header">
-            <h3 class="cd-modal__title">Add Income</h3>
-            <button type="button" class="cd-modal__close" onclick="closeModal('modal-add-income')" aria-label="Close modal">&times;</button>
+            <h3 class="cd-modal__title">Add Expense</h3>
+            <button type="button" class="cd-modal__close" onclick="closeModal('modal-add-expense')" aria-label="Close modal">&times;</button>
         </header>
 
         <form action="/treasury/income/store" method="POST" class="cd-modal__form">
@@ -43,7 +43,7 @@
             </div>
 
             <footer class="cd-modal__footer">
-                <button type="button" class="cd-btn cd-btn--ghost" onclick="closeModal('modal-add-income')">Cancel</button>
+                <button type="button" class="cd-btn cd-btn--ghost" onclick="closeModal('modal-add-expense')">Cancel</button>
                 <button type="submit" class="cd-btn cd-btn--primary">Add transaction</button>
             </footer>
         </form>

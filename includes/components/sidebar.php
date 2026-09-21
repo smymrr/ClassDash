@@ -14,12 +14,12 @@ $userInitial = $currentUser['name'] !== ''
     : 'PLACEHOLDER_USER_INITIAL_SIDEBAR';
 
 // Fallback if a view is rendered without going through the router.
-$activeNav = $activeNav ?? '';
+$activeNav = $GLOBALS['activeNav'] ?? '';
 
 $navItems = [
     ['key' => 'dashboard',  'label' => 'Dashboard',  'href' => '/dashboard',   'icon' => 'grid'],
     ['key' => 'treasury',   'label' => 'Treasury',   'href' => '/treasury',    'icon' => 'wallet'],
-    ['key' => 'info_board', 'label' => 'Info Board', 'href' => '/info-board',  'icon' => 'clipboard'],
+    ['key' => 'info-board', 'label' => 'Info Board', 'href' => '/info-board',  'icon' => 'clipboard'],
     ['key' => 'members',    'label' => 'Members',    'href' => '/members',     'icon' => 'users'],
 ];
 
@@ -77,7 +77,7 @@ function classdash_icon(string $name): string
                 <li>
                     <a
                         href="<?= htmlspecialchars(get_nav_item_href($item['href'])) ?>"
-                        class="cd-sidebar__nav-link<?= $activeNav === $item['key'] ? ' is-active' : '' ?>"
+                        class="cd-sidebar__nav-link <?= $activeNav === $item['key'] ? ' is-active' : '' // Add current page marker ?>" 
                         <?= $activeNav === $item['key'] ? 'aria-current="page"' : '' ?>
                     >
                         <svg class="cd-sidebar__nav-icon" viewBox="0 0 24 24" fill="none"

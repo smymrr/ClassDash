@@ -4,7 +4,12 @@
     --cd-sidebar-bg: #171c2b;
     --cd-sidebar-bg-alt: #1f2537;
     --cd-accent: #4f6df5;
+<<<<<<< Updated upstream
     --cd-accent-soft: rgba(79, 109, 245, 0.16);
+=======
+    --cd-accent-soft: #4f6df529;
+    --cd-navy: #1a2234;
+>>>>>>> Stashed changes
     --cd-orange: #f59e0b;
     --cd-orange-soft: rgba(245, 158, 11, 0.12);
     --cd-green: #10b981;
@@ -16,6 +21,7 @@
     --cd-surface: #ffffff;
     --cd-text: #14162b;
     --cd-text-muted: #8b90a6;
+    --cd-hover: #f5f6fb;
     --cd-border: #e6e9f2;
 
     --cd-radius-sm: 8px;
